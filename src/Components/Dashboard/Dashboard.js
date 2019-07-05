@@ -8,6 +8,7 @@ class Dashboard extends Component {
     }
 
     deleteProduct = (id) => {
+        this.props.trackProduct(id)
         axios
             .delete(`/api/inventory/${id}`)
             .then(res => {
@@ -28,6 +29,7 @@ class Dashboard extends Component {
                             price={product.price}
                             img={product.img}
                             deleteProduct={this.deleteProduct}
+                            editProduct={this.props.editProduct}
                             />
                         )
                     })}

@@ -2,19 +2,20 @@ import React, {Component} from 'react'
 import axios from 'axios'
 
 class Form extends Component {
-    constructor() {
+    constructor(props) {
         super()
         this.state = {
             name: '',
             price: 0,
             defaultImg: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFvmqZ8U-_yLqCw689lAINC-YHugHvC-fVhkTxoCyJ1A-1VKAP',
             img: '',
-            edit: true
+            edit: props.edit,
+            currentProductId: null
         }
     }
 
     // componentDidUpdate(prevProps) {
-    //     if(prevProps.id !== this.props.id) {
+    //     if(prevProps.currentProductId !== this.props.id) {
     //         this.setState({ accountBalance: this.props.accountTotal })}}
     
     addNewProduct = () => {
@@ -37,12 +38,12 @@ class Form extends Component {
     }
     
     flipEdit = () => {
-        this.setState ({ edit: !this.state.edit })
         this.setState ({
             name: '',
             price: 0,
             defaultImg: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFvmqZ8U-_yLqCw689lAINC-YHugHvC-fVhkTxoCyJ1A-1VKAP',
-            img: ''
+            img: '',
+            currentProductId: this.props.currentProductId
         })
     }
 
@@ -65,6 +66,7 @@ class Form extends Component {
     
     render() {
         const { name, price, defaultImg, img, edit } = this.state
+        console.log('form edit:', this.state.edit)
         
         return (
             <div className='formContainer'>
