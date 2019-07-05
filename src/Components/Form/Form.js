@@ -14,9 +14,9 @@ class Form extends Component {
         }
     }
 
-    // componentDidUpdate(prevProps) {
-    //     if(prevProps.currentProductId !== this.props.id) {
-    //         this.setState({ accountBalance: this.props.accountTotal })}}
+    componentDidUpdate(prevProps) {
+        if(prevProps.edit !== this.props.edit) {
+            this.setState({ edit: this.props.edit })}}
     
     addNewProduct = () => {
         const { name, price, img } = this.state
@@ -66,7 +66,8 @@ class Form extends Component {
     
     render() {
         const { name, price, defaultImg, img, edit } = this.state
-        console.log('form edit:', this.state.edit)
+        console.log('form edit:', edit)
+        console.log('props edit:', this.props.edit)
         
         return (
             <div className='formContainer'>
